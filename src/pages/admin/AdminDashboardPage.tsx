@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/lib/supabase';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, 
   FileText, 
@@ -35,6 +36,7 @@ export default function AdminDashboardPage() {
     recentMessages: []
   });
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -178,7 +180,7 @@ export default function AdminDashboardPage() {
                     <Badge variant="outline">{volunteer.skills || 'General'}</Badge>
                   </div>
                 ))}
-                <Button variant="outline" className="w-full" onClick={() => window.location.href = '/admin/volunteers'}>
+                <Button variant="outline" className="w-full" onClick={() => navigate('/admin/dashboard/volunteers')}>
                   View All Volunteers
                 </Button>
               </div>
@@ -214,7 +216,7 @@ export default function AdminDashboardPage() {
                     <Badge variant="outline">{message.subject || 'General'}</Badge>
                   </div>
                 ))}
-                <Button variant="outline" className="w-full" onClick={() => window.location.href = '/admin/contact'}>
+                <Button variant="outline" className="w-full" onClick={() => navigate('/admin/dashboard/contact')}>
                   View All Messages
                 </Button>
               </div>
@@ -232,19 +234,19 @@ export default function AdminDashboardPage() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Button variant="outline" onClick={() => window.location.href = '/admin/volunteers'}>
+            <Button variant="outline" onClick={() => navigate('/admin/dashboard/volunteers')}>
               <Users className="h-4 w-4 mr-2" />
               Manage Volunteers
             </Button>
-            <Button variant="outline" onClick={() => window.location.href = '/admin/reports'}>
+            <Button variant="outline" onClick={() => navigate('/admin/dashboard/reports')}>
               <FileText className="h-4 w-4 mr-2" />
               Manage Reports
             </Button>
-            <Button variant="outline" onClick={() => window.location.href = '/admin/gallery'}>
+            <Button variant="outline" onClick={() => navigate('/admin/dashboard/gallery')}>
               <Image className="h-4 w-4 mr-2" />
               Manage Gallery
             </Button>
-            <Button variant="outline" onClick={() => window.location.href = '/admin/contact'}>
+            <Button variant="outline" onClick={() => navigate('/admin/dashboard/contact')}>
               <MessageCircle className="h-4 w-4 mr-2" />
               View Messages
             </Button>
