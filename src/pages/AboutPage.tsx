@@ -132,7 +132,6 @@ export default function AboutPage() {
               { member: "Chinedu Chedi", role: "Governing Member", img: teamChinedu },
               { member: "Vanessa Nyingifa-Williams", role: "Governing Member", img: teamVanessa },
               { member: "Jessica Tee Orika-Owunna", role: "Governing Member", img: teamJessica },
-              { member: "Sarah Chiemela Wabara", role: "Governing Member", img: teamSarah },
             ].map((member, index) => (
               <FadeInOnScroll key={member.member} delay={index * 150}>
                 <Card className="ngo-card p-6">
