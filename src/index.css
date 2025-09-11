@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RABNI NGO Design System - Professional, trustworthy, inspiring */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+
+    /* RABNI Brand Palette - Official Colors */
+    --primary: 0 75% 25%;              /* Ox-blood / Deep Maroon #800020 */
+    --primary-foreground: 0 0% 100%;   /* White */
+    --primary-light: 0 75% 85%;        /* Light Maroon for backgrounds */
+    
+    --secondary: 0 0% 100%;            /* White */
+    --secondary-foreground: 0 75% 25%; /* Ox-blood text */
+    --secondary-light: 0 0% 95%;       /* Light gray */
+    
+    --accent: 0 0% 20%;                /* Dark Gray / Black for text */
+    --accent-foreground: 0 0% 100%;    /* White */
+    --accent-light: 0 0% 90%;          /* Light Gray */
+    
+    /* Supporting Colors */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 100% 32%;
+    
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    --impact-gradient: linear-gradient(90deg, hsl(var(--primary) / 0.1), hsl(var(--primary) / 0.05));
+    --card-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+    --hero-shadow: 0 20px 60px -20px hsl(var(--primary) / 0.4);
+    
+    /* Typography Scale */
+    --font-size-hero: 3.5rem;
+    --font-size-display: 2.25rem;
+    --font-size-heading: 1.875rem;
+    --line-height-tight: 1.1;
+    
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Typography Classes */
+  .hero-text {
+    font-size: var(--font-size-hero);
+    line-height: var(--line-height-tight);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  .display-text {
+    font-size: var(--font-size-display);
+    line-height: var(--line-height-tight);
+    font-weight: 600;
+  }
+
+  .heading-text {
+    font-size: var(--font-size-heading);
+    line-height: 1.2;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* NGO Card Components */
+  .ngo-card {
+    @apply bg-card rounded-xl border border-border shadow-[var(--card-shadow)] 
+           transition-transform duration-300 hover:scale-[1.02] hover:shadow-[var(--hero-shadow)];
+  }
+
+  .impact-card {
+    @apply ngo-card bg-gradient-to-br from-primary/5 to-secondary/5 
+           border-primary/20 p-6 text-center;
+  }
+
+  .program-card {
+    @apply ngo-card p-6 overflow-hidden relative;
+  }
+
+  /* Timeline Card Variants */
+  .timeline-card-primary {
+    @apply bg-primary-light/10 border-primary/20 text-foreground;
+  }
+  
+  .timeline-card-secondary {
+    @apply bg-secondary-light border-secondary/20 text-foreground;
+  }
+
+  /* Button Variants */
+  .btn-hero {
+    @apply bg-[var(--hero-gradient)] text-primary-foreground font-semibold 
+           px-8 py-4 rounded-xl shadow-[var(--hero-shadow)] 
+           transition-[var(--transition-smooth)] hover:scale-105 
+           hover:shadow-[var(--hero-shadow)] focus:ring-4 focus:ring-primary/20;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground font-semibold 
+           px-6 py-3 rounded-lg transition-[var(--transition-smooth)] 
+           hover:bg-secondary/90 hover:scale-[1.02] focus:ring-4 focus:ring-secondary/20;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary font-semibold 
+           px-6 py-3 rounded-lg transition-[var(--transition-smooth)] 
+           hover:bg-primary hover:text-primary-foreground hover:scale-[1.02] 
+           focus:ring-4 focus:ring-primary/20;
+  }
+
+  /* Layout Components */
+  .hero-section {
+    @apply min-h-[80vh] bg-[var(--hero-gradient)] relative overflow-hidden 
+           flex items-center justify-center text-center;
+  }
+
+  .section-spacing {
+    @apply py-16 lg:py-24;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Animation Classes */
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-[var(--transition-smooth)];
+  }
+
+  .bounce-in {
+    @apply transition-[var(--transition-bounce)] hover:scale-110;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-hero-zoom {
+  animation: heroZoom 10s ease-in-out infinite alternate;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}

@@ -1,0 +1,10 @@
+{"type":"FeatureCollection","features":[
+  {"type":"Feature","properties":{"NAME_1":"FCT Abuja"},"geometry":{"type":"Polygon","coordinates":[[[7.30,9.00],[7.80,9.00],[7.80,9.50],[7.30,9.50],[7.30,9.00]]]}},
+  {"type":"Feature","properties":{"NAME_1":"Kano"},"geometry":{"type":"Polygon","coordinates":[[[8.50,11.20],[9.30,11.20],[9.30,12.10],[8.50,12.10],[8.50,11.20]]]}},
+  {"type":"Feature","properties":{"NAME_1":"Kaduna"},"geometry":{"type":"Polygon","coordinates":[[[7.50,10.00],[8.60,10.00],[8.60,11.00],[7.50,11.00],[7.50,10.00]]]}},
+  {"type":"Feature","properties":{"NAME_1":"Borno"},"geometry":{"type":"Polygon","coordinates":[[[12.00,11.00],[13.70,11.00],[13.70,12.50],[12.00,12.50],[12.00,11.00]]]}},
+  {"type":"Feature","properties":{"NAME_1":"Lagos"},"geometry":{"type":"Polygon","coordinates":[[[3.10,6.30],[3.70,6.30],[3.70,6.70],[3.10,6.70],[3.10,6.30]]]}},
+  {"type":"Feature","properties":{"NAME_1":"Bayelsa"},"geometry":{"type":"Polygon","coordinates":[[[5.80,4.80],[6.60,4.80],[6.60,5.40],[5.80,5.40],[5.80,4.80]]]}},
+  {"type":"Feature","properties":{"NAME_1":"Rivers"},"geometry":{"type":"Polygon","coordinates":[[[6.70,4.70],[7.30,4.70],[7.30,5.20],[6.70,5.20],[6.70,4.70]]]}}
+]}
+
