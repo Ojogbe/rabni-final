@@ -284,14 +284,15 @@ export default function ImpactPage() {
                 <CardContent className="p-0">
                   <h3 className="text-xl font-semibold text-primary mb-4">Literacy Bootcamp for Out of School Children</h3>
                   <div className="aspect-video bg-muted rounded-lg mb-4 overflow-hidden">
-                    <video 
-                      controls 
-                      className="w-full h-full object-cover"
-                      poster="/placeholder.svg"
-                    >
-                      <source src="/src/assets/Impact Page video feedback/Literacy Bootcamp for Out of school children.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/Dugk6oqWh-g"
+                      title="Literacy Bootcamp for Out of School Children"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
                   </div>
                   <p className="text-muted-foreground">
                     See how our literacy bootcamp transforms the lives of out-of-school children, giving them the foundation they need for a brighter future.
@@ -305,14 +306,15 @@ export default function ImpactPage() {
                 <CardContent className="p-0">
                   <h3 className="text-xl font-semibold text-primary mb-4">Literacy Bootcamp for Children Struggling in Formal Schooling</h3>
                   <div className="aspect-video bg-muted rounded-lg mb-4 overflow-hidden">
-                    <video 
-                      controls 
-                      className="w-full h-full object-cover"
-                      poster="/placeholder.svg"
-                    >
-                      <source src="/src/assets/Impact Page video feedback/Literacy Bootcamp for children struggling to read in formal schooling.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/mye3gQ-xUog"
+                      title="Literacy Bootcamp for Children Struggling in Formal Schooling"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
                   </div>
                   <p className="text-muted-foreground">
                     Discover how we help children who are falling behind in traditional school settings catch up and excel in their education.
@@ -326,14 +328,15 @@ export default function ImpactPage() {
                 <CardContent className="p-0">
                   <h3 className="text-xl font-semibold text-primary mb-4">Teacher Training for LEA School Teachers</h3>
                   <div className="aspect-video bg-muted rounded-lg mb-4 overflow-hidden">
-                    <video 
-                      controls 
-                      className="w-full h-full object-cover"
-                      poster="/placeholder.svg"
-                    >
-                      <source src="/src/assets/Impact Page video feedback/Teacher Training for teachers in LEA school.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/3TGCSI3Vxjo"
+                      title="Teacher Training for LEA School Teachers"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
                   </div>
                   <p className="text-muted-foreground">
                     Watch how our teacher training programs empower educators in Local Education Authority schools with new skills and methodologies.
