@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Newspaper, Image, FileText, Users, MessageSquare, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { supabase } from '@/lib/supabase';
+import { toast } from 'sonner';
 
 const adminNavigation = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-  { name: 'Blog Posts', href: '/admin/blog', icon: Newspaper },
-  { name: 'Gallery', href: '/admin/gallery', icon: Image },
-  { name: 'Reports', href: '/admin/reports', icon: FileText },
-  { name: 'Volunteers', href: '/admin/volunteers', icon: Users },
-  { name: 'Contact Messages', href: '/admin/contact', icon: MessageSquare },
+  { name: 'Blog Posts', href: '/admin/dashboard/blog', icon: Newspaper },
+  { name: 'Gallery', href: '/admin/dashboard/gallery', icon: Image },
+  { name: 'Reports', href: '/admin/dashboard/reports', icon: FileText },
+  { name: 'Volunteers', href: '/admin/dashboard/volunteers', icon: Users },
+  { name: 'Contact Messages', href: '/admin/dashboard/contact', icon: MessageSquare },
 ];
 
 export default function AdminDashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarHovered, setSidebarHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast.success('Logged out');
+      navigate('/admin', { replace: true });
+    } catch (error) {
+      toast.error('Error logging out');
+    }
+  };
 
   // Sidebar is expanded if open (mobile) or hovered (desktop)
   const isSidebarExpanded = sidebarOpen || sidebarHovered;
@@ -65,7 +78,7 @@ export default function AdminDashboardLayout() {
           ))}
         </nav>
         <div className="mt-auto">
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full" onClick={handleLogout}>
             {isSidebarExpanded ? 'Logout' : <span className="sr-only">Logout</span>}
           </Button>
         </div>
