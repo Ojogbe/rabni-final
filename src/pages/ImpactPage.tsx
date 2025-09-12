@@ -90,10 +90,9 @@ export default function ImpactPage() {
         <div className="container-padding max-w-7xl mx-auto text-center">
           <FadeInOnScroll>
             <h1 className="display-text text-primary mb-4">Measuring Our Impact</h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Transparency and accountability are core to our mission. Explore our comprehensive 
-            impact data, success stories, and the tangible difference we're making in Nigerian communities.
-          </p>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
+              RABNI's work is transforming education for children and youth in low-resource and crisis-affected communities. Through our programs, we have reached thousands of learners, empowered teachers with new skills, and supported families and communities to rebuild hope through education. Each number represents a story of resilience, growth, and the belief that every child deserves the chance to learn and thrive.
+            </p>
           </FadeInOnScroll>
         </div>
       </section>

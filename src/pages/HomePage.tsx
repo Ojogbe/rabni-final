@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Users, GraduationCap, Home, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import heroImage from "@/assets/IMAGES TO USE EVERYWHERE ELSE/Our Mission Empowering Futures.jpg";
+import heroImage from "@/assets/IMAGES TO USE EVERYWHERE ELSE/Hero Section Background Image.jpg";
 import girlsLeftBehindImage from "@/assets/IMAGES TO USE EVERYWHERE ELSE/Girls Left Behind.jpg";
 import floatImage from "@/assets/IMAGES TO USE EVERYWHERE ELSE/FLOAT Initiative.png";
 import ilearnImage from "@/assets/IMAGES TO USE EVERYWHERE ELSE/iLearn_Ecosystem.jpg";
@@ -183,49 +183,76 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Impact Videos */}
       <section className="section-spacing bg-muted/50">
         <div className="container-padding max-w-7xl mx-auto">
           <FadeInOnScroll>
             <div className="text-center mb-12">
-              <h2 className="display-text text-primary mb-4">Stories of Impact</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Hear from the communities we serve about how education is changing lives.
-              </p>
+              <h2 className="display-text text-primary mb-4">Transforming lives and communities through education across Africa</h2>
             </div>
           </FadeInOnScroll>
 
           <FadeInOnScroll delay={100}>
-            <div className="max-w-4xl mx-auto">
-              <Card className="ngo-card p-8 text-center">
-                <CardContent className="p-0">
-                  <div className="mb-6">
-                    <p className="text-lg italic text-muted-foreground mb-4">
-                      "{testimonials[currentTestimonial].content}"
-                    </p>
-                    <div>
-                      <div className="font-semibold text-primary">
-                        {testimonials[currentTestimonial].name}
+            <div className="relative">
+              <div className="flex space-x-6 overflow-x-auto pb-6 -mx-4 px-4 scrollbar-hide">
+                {[
+                  {
+                    title: "Literacy Bootcamp for Out of School Children",
+                    src: "/src/assets/Impact Page video feedback/Literacy Bootcamp for Out of school children.mp4",
+                    description: "See how our literacy bootcamps are transforming the lives of out-of-school children across Nigeria."
+                  },
+                  {
+                    title: "Literacy Support for Struggling Students",
+                    src: "/src/assets/Impact Page video feedback/Literacy Bootcamp for children struggling to read in formal schooling.mp4",
+                    description: "Watch how we help children who are struggling in formal schooling catch up with their peers."
+                  },
+                  {
+                    title: "Teacher Training Program",
+                    src: "/src/assets/Impact Page video feedback/Teacher Training for teachers in LEA school.mp4",
+                    description: "Our comprehensive teacher training programs empower educators with modern teaching methodologies."
+                  }
+                ].map((video, index) => (
+                  <div key={index} className="flex-shrink-0 w-96">
+                    <Card className="h-full ngo-card overflow-hidden">
+                      <div className="aspect-video bg-black">
+                        <video
+                          src={video.src}
+                          title={video.title}
+                          className="w-full h-full object-cover"
+                          controls
+                          preload="metadata"
+                        />
                       </div>
-                      <div className="text-sm text-muted-foreground">
-                        {testimonials[currentTestimonial].role}
-                      </div>
-                    </div>
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-primary mb-2">{video.title}</h3>
+                        <p className="text-muted-foreground text-sm">{video.description}</p>
+                      </CardContent>
+                    </Card>
                   </div>
-                  <div className="flex justify-center space-x-2">
-                    {testimonials.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentTestimonial(index)}
-                        className={`w-3 h-3 rounded-full transition-colors border border-primary/30 ${
-                          index === currentTestimonial ? 'bg-primary' : 'bg-muted-foreground/30'
-                        }`}
-                        aria-label={`Go to testimonial ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                ))}
+              </div>
+              
+              {/* Scroll indicators */}
+              <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-2 pointer-events-none">
+                <button 
+                  className="bg-background/80 hover:bg-background rounded-full p-2 shadow-lg pointer-events-auto"
+                  onClick={() => {
+                    const container = document.querySelector('.overflow-x-auto');
+                    if (container) container.scrollBy({ left: -400, behavior: 'smooth' });
+                  }}
+                >
+                  <ArrowRight className="h-6 w-6 rotate-180" />
+                </button>
+                <button 
+                  className="bg-background/80 hover:bg-background rounded-full p-2 shadow-lg pointer-events-auto"
+                  onClick={() => {
+                    const container = document.querySelector('.overflow-x-auto');
+                    if (container) container.scrollBy({ left: 400, behavior: 'smooth' });
+                  }}
+                >
+                  <ArrowRight className="h-6 w-6" />
+                </button>
+              </div>
             </div>
           </FadeInOnScroll>
         </div>

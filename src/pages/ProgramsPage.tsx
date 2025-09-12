@@ -156,11 +156,8 @@ export default function ProgramsPage() {
         <div className="container-padding max-w-7xl mx-auto text-center">
           <FadeInOnScroll>
             <h1 className="display-text text-primary mb-4">Our Programs</h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-2">
-              Discover the innovative programs through which RABNI is transforming education.
-            </p>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-              Innovative education interventions designed for Nigeria's unique challenges.
+            <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto mb-2">
+              At RABNI, we design and deliver innovative education solutions that bridge learning gaps for children and youth in underserved communities. From literacy and digital classrooms to teacher training, bootcamps, and resilience programs, our initiatives give learners the tools to thrive and equip educators to deliver quality teaching even in the most resource-limited settings.
             </p>
           </FadeInOnScroll>
         </div>
@@ -195,7 +192,9 @@ export default function ProgramsPage() {
             <h2 className="display-text text-primary text-center mb-12">Program Details</h2>
           </FadeInOnScroll>
           <div className="space-y-16">
-            {programs.map((program, index) => {
+            {programs
+              .filter(program => program.hasLearnMore) // Only show programs with learn more enabled
+              .map((program, index) => {
               const isEven = index % 2 === 0;
               const detailsOrder = isEven ? "lg:order-1" : "lg:order-2";
               const imageOrder = isEven ? "lg:order-2" : "lg:order-1";
