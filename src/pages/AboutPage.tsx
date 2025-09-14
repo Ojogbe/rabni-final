@@ -81,15 +81,15 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero-section relative">
+      <section className="relative h-96">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/src/assets/IMAGES%20TO%20USE%20EVERYWHERE%20ELSE/Hero%20Section%20Background%20Image.jpg)' }}
+          style={{ backgroundImage: 'url(/mission-bg.jpg)' }}
         />
-        <div className="absolute inset-0 bg-primary/80" />
+        <div className="absolute inset-0 bg-primary/70" />
         
-        <div className="relative container-padding max-w-7xl mx-auto text-center text-white py-32 lg:py-40">
-          <div className="max-w-4xl mx-auto">
+        <div className="relative h-full flex items-center justify-center container-padding max-w-7xl mx-auto text-center text-white">
+          <div className="max-w-4xl px-4">
             <FadeInOnScroll>
               <h1 className="display-text text-white mb-6">About RABNI</h1>
             </FadeInOnScroll>
