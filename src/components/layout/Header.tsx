@@ -49,7 +49,7 @@ export default function Header() {
             <Link to="/" className="flex flex-col items-center" onClick={(e) => handleScrollToSection(e, "/")}>
               <div className="flex items-center justify-center h-8 w-28">
                 <img 
-                  src="/src/assets/NEW%20LOGO.png" 
+                  src="/NEW%20LOGO.png" 
                   alt="RABNI Logo" 
                   className="h-full w-full object-contain"
                 />

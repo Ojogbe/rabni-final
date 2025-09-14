@@ -33,7 +33,7 @@ export default function Footer() {
               <div className="flex flex-col items-center mb-4">
               <div className="flex items-center justify-center h-8 w-28 mb-2">
                 <img 
-                  src="/src/assets/NEW%20LOGO.png" 
+                  src="/NEW%20LOGO.png" 
                   alt="RABNI Logo" 
                   className="h-full w-full object-contain"
                 />
