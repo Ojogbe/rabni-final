@@ -30,15 +30,15 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="lg:col-span-1">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  R
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold">RABNI</span>
-                  <span className="text-sm opacity-90">Education Interventions</span>
-                </div>
+              <div className="flex flex-col items-center mb-4">
+              <div className="flex items-center justify-center h-8 w-28 mb-2">
+                <img 
+                  src="/src/assets/NEW%20LOGO.png" 
+                  alt="RABNI Logo" 
+                  className="h-full w-full object-contain"
+                />
               </div>
+            </div>
               <p className="text-sm opacity-90 mb-4">
                 Transforming communities through education. Reaching underserved, marginalized, 
                 and conflict-affected communities across Nigeria.

@@ -46,13 +46,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-3" onClick={(e) => handleScrollToSection(e, "/")}>
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-xl">
-                R
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-primary">RABNI</span>
-                <span className="text-xs text-muted-foreground -mt-1">Education Interventions</span>
+            <Link to="/" className="flex flex-col items-center" onClick={(e) => handleScrollToSection(e, "/")}>
+              <div className="flex items-center justify-center h-8 w-28">
+                <img 
+                  src="/src/assets/NEW%20LOGO.png" 
+                  alt="RABNI Logo" 
+                  className="h-full w-full object-contain"
+                />
               </div>
             </Link>
           </div>

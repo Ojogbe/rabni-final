@@ -81,11 +81,24 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-primary-light/20 py-20 lg:py-32">
-        <div className="container-padding max-w-7xl mx-auto text-center">
-          <FadeInOnScroll>
-            <h1 className="display-text text-primary mb-4">About RABNI</h1>
-          </FadeInOnScroll>
+      <section className="hero-section relative">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/src/assets/IMAGES%20TO%20USE%20EVERYWHERE%20ELSE/Hero%20Section%20Background%20Image.jpg)' }}
+        />
+        <div className="absolute inset-0 bg-primary/80" />
+        
+        <div className="relative container-padding max-w-7xl mx-auto text-center text-white py-32 lg:py-40">
+          <div className="max-w-4xl mx-auto">
+            <FadeInOnScroll>
+              <h1 className="display-text text-white mb-6">About RABNI</h1>
+            </FadeInOnScroll>
+            <FadeInOnScroll delay={200}>
+              <p className="text-xl md:text-2xl opacity-95">
+                Empowering communities through innovative education solutions
+              </p>
+            </FadeInOnScroll>
+          </div>
         </div>
       </section>
 
@@ -101,7 +114,7 @@ export default function AboutPage() {
                 Our work is community-rooted, from grassroots mobilization and teacher training to the deployment of innovative learning solutions designed for schools with little or no resources. We combine education, technology, and social innovation to ensure that no child is left behind, regardless of where they live or the challenges they face.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Over the years, RABNI has grown into a trusted implementation partner for both local and international organizations, including the International Rescue Committee (IRC), USAID, Mohammed Sanuki Foundation, US Embassy Abuja, Korean Cultural Centre Nigeria, TED-Ed, and YALI RLC Accra. Through these collaborations, we have reached thousands of children, trained hundreds of teachers, and provided schools and communities with practical solutions for literacy, digital skills, and resilience.
+                Over the years, RABNI has grown into a trusted implementation partner for both local and international organizations, including the International Rescue Committee (IRC), USAID, Mohammed Sanusi Foundation, US Embassy Abuja, Korean Cultural Centre Nigeria, TED-Ed, and YALI RLC Accra. Through these collaborations, we have reached thousands of children, trained hundreds of teachers, and provided schools and communities with practical solutions for literacy, digital skills, and resilience.
               </p>
               <p className="text-lg text-muted-foreground">
                 Our initiatives go beyond academics. By integrating social emotional learning, gender empowerment, climate-responsive education, and digital innovation, we prepare learners not only to succeed in school but also to grow into empathetic leaders, problem solvers, and change-makers for Africa's future.
@@ -177,7 +190,7 @@ export default function AboutPage() {
                 member: "Israel O. Pender", 
                 role: "Executive Director, Academics and Learning", 
                 img: teamIsrael,
-                bio: "Israel O. Pender is an accomplished educator and academic leader with over 15 years of experience in teaching, curriculum development, and school administration. His career began in primary and secondary education, where he taught and mentored students at the National Mathematical Centre's IMSA program, helping hundreds of struggling learners build literacy skills and successfully scale national examinations. Many of his students have since become leaders in academia, technology, and other sectors worldwide.\n\nIsrael is the co-founder of RABNI Education Interventions, and he serves as Executive Director of Academics and Learning, leading the organization's academic strategy and ensuring that programs align with national and global standards while addressing the realities of underserved communities. He oversees literacy and numeracy bootcamps, STEAM initiatives, and teacher training workshops that strengthen the capacity of educators while equipping students with skills for lifelong success.\n\nIsrael's work reflects a commitment to creativity, learner-centered methods, and the strategic use of technology to make education accessible and impactful. His leadership continues to inspire confidence in students, empower teachers, and transform classrooms into spaces where excellence thrives."
+                bio: "Israel O. Pender is an accomplished educator and academic leader with over 15 years of experience in teaching, curriculum development, and school administration. His teaching career began in primary and secondary schools, where he taught in three different institutions before joining the National Mathematical Centre – International Model Science Academy (NMC-IMSA). At NMC-IMSA, where he taught for six years, Israel specialized in English Language and Literature and also served as Exam Officer and later Vice Principal (Academics). In these roles, he mentored teachers, guided students, and helped hundreds of struggling learners build literacy skills and excel in national examinations. Many of his former students have since become leaders in academia, technology, and other sectors worldwide.\n\nIsrael is the co-founder of RABNI Education Interventions, where he currently serves as Executive Director of Academics and Learning. In this capacity, he leads the organization's academic strategy, ensuring that programs align with both national and global standards while addressing the unique realities of underserved communities. He oversees literacy and numeracy bootcamps, STEAM initiatives, and teacher training workshops, strengthening the capacity of educators while equipping students with skills for lifelong success.\n\nPassionate about learner-centered education, creativity, and the strategic use of technology, Israel's leadership continues to inspire confidence in students, empower teachers, and transform classrooms into spaces where excellence thrives."
               },
               { 
                 member: "Patricia Uma", 
@@ -244,19 +257,19 @@ export default function AboutPage() {
                 member: "Emmanuel P. Erhioghene", 
                 role: "Youth Advisory Board Member", 
                 img: teamEmmanuel,
-                bio: ""
+                bio: "Emmanuel is the Founder/CEO of HOLYDIGITS101, the pioneering organization powering Mprofy DAO, where he leads the mission of transforming Africa's education system through Web3 technology. With a vision to integrate blockchain, AI, and decentralized tools into schools across Nigeria and beyond, he is at the forefront of building a new model of digital learning and wealth creation for the next generation.\n\nAs Partnership Lead, He oversees strategic collaborations with schools, communities, ed-tech firms, and blockchain foundations. His role ensures that HOLYDIGITS101's innovations—such as Seed/Deed NFTs for tuition, MProlearn for digital skills, and the Mprofy Business Suite—are both scalable and impactful.\n\nBeyond executive leadership, he is deeply involved in curriculum design, community empowerment, and ecosystem development, positioning HOLYDIGITS101 as a bridge between Africa's local education sector and the global Web3 economy.\n\nThrough his work, Emmanuel champions the belief that Africa's future lies in digital transformation, with students and communities equipped not just as users of technology but as builders and innovators."
               },
               { 
-                member: "Sarah Chiemela Wabara", 
+                member: "Sarah Wabara Chiemela", 
                 role: "Youth Advisory Board Member", 
                 img: teamSarah,
-                bio: ""
+                bio: "Sarah Wabara Chiemela is a 500-level Law student at Abia State University and a proud recipient of the Unubiko Foundation Scholarship. Her decision to pursue law is fueled by a deep passion for justice and a strong commitment to advancing fairness within society. She has particular academic interests in contract law, commercial law, and company law, areas she believes are critical for fostering economic growth and social equity.\n\nOutside the classroom, Sarah has demonstrated remarkable leadership and consistency as the founder and coordinator of the Wisteria Book Club, which she has nurtured for more than five years. Through this initiative, she has cultivated a community that promotes reading, dialogue, and intellectual development among young people. Her commitment to service extends to volunteering with legal clinics and contributing to literacy development through her work in a community library as an alumna of the PEA Foundation.\n\nSarah's strengths lie in her ability to communicate effectively and lead with vision. Known for her excellent conversational skills and ability to connect with diverse audiences, she has represented her lecturers at high-level conferences and is frequently invited to speak at youth and women-focused events. As both a public speaker and a writer, she thrives in creating dialogue that inspires change and empowers communities.\n\nHer alignment with RABNI's mission is rooted in her passion for education and gender equality. Sarah is particularly driven to amplify the voices of women who are often denied their rights and opportunities due to gender. Looking ahead, she envisions establishing her own NGO dedicated to combating human trafficking and abuse against women, while continuing to be a voice of hope and change.\n\nThrough her role on RABNI's Youth Advisory Board, Sarah seeks to learn, contribute, and grow as a young leader committed to shaping a more just and equitable society."
               },
               { 
                 member: "Ojonimi Jeremiah Ojogbe", 
                 role: "Youth Advisory Board Member", 
                 img: teamOjonimi,
-                bio: ""
+                bio: "Ojonimi Jeremiah Ojogbe (also known as Jeremiah Ojogbe) is a full-stack software developer, designer, and social entrepreneur who is passionate about using education and technology to open doors for young people. With a background in Science and Environmental Education, he has always believed in the power of learning to shape lives and transform communities.\n\nDriven by this conviction, Jeremiah founded CodeEasy, a platform that has already helped over 100 students in Nigeria and Kenya gain affordable access to coding and digital skills. Through online courses and mentorship, he creates simple and practical ways for young people to explore technology and prepare for global opportunities without the barriers of cost or location.\n\nHe is also the founder of Our Brand Africa, a growing startup that empowers small and medium-scale enterprises across the continent. By combining technology, media, and creativity, Our Brand Africa helps businesses build their presence, tell authentic stories, and compete on both local and international stages.\n\nWhat sets Jeremiah apart is how he blends his technical expertise with a strong commitment to inclusion and accessibility. Whether he is building platforms, training students, or supporting entrepreneurs, his focus is always on creating opportunities for people who might otherwise be left behind.\n\nHis connection with RABNI's mission comes naturally: like RABNI, he believes that when education is combined with creativity and technology, it can unlock Africa's true potential. Through his role on the Youth Advisory Board, he hopes to bring fresh ideas, collaborate with peers, and contribute to programs that strengthen literacy, digital empowerment, and community development.\n\nLooking ahead, Jeremiah's vision is simple but ambitious to see thousands more young Africans equipped with the skills, confidence, and mindset to not just participate in the global economy, but to lead and innovate within it."
               },
             ].map((member, index) => (
               <FadeInOnScroll key={member.member} delay={index * 150}>

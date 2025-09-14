@@ -115,7 +115,7 @@ export default function HomePage() {
             <div className="text-center mb-12">
               <h2 className="display-text text-primary mb-4">Our Impact</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Since 2016, we've been transforming lives through education across Nigeria.
+                Transforming lives and communities through education across Africa
               </p>
             </div>
           </FadeInOnScroll>
@@ -188,7 +188,10 @@ export default function HomePage() {
         <div className="container-padding max-w-7xl mx-auto">
           <FadeInOnScroll>
             <div className="text-center mb-12">
-              <h2 className="display-text text-primary mb-4">Transforming lives and communities through education across Africa</h2>
+              <h2 className="display-text text-primary mb-4">See the Impact of Education</h2>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+                Every day, we witness the transformative power of education in communities across Africa. Our programs are creating lasting change, one child, one teacher, and one community at a time.
+              </p>
             </div>
           </FadeInOnScroll>
 
