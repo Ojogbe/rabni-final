@@ -184,80 +184,91 @@ export default function HomePage() {
       </section>
 
       {/* Impact Videos */}
-      <section className="section-spacing bg-muted/50">
+      <section className="section-spacing bg-white relative">
         <div className="container-padding max-w-7xl mx-auto">
           <FadeInOnScroll>
             <div className="text-center mb-12">
-              <h2 className="display-text text-primary mb-4">See the Impact of Education</h2>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-                Every day, we witness the transformative power of education in communities across Africa. Our programs are creating lasting change, one child, one teacher, and one community at a time.
+              <h2 className="display-text text-primary mb-4">Video Success Stories</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Watch real stories from communities where our programs have made a lasting impact.
               </p>
             </div>
           </FadeInOnScroll>
-
-          <FadeInOnScroll delay={100}>
-            <div className="relative">
-              <div className="flex space-x-6 overflow-x-auto pb-6 -mx-4 px-4 scrollbar-hide">
-                {[
-                  {
-                    title: "Literacy Bootcamp for Out of School Children",
-                    src: "/src/assets/Impact Page video feedback/Literacy Bootcamp for Out of school children.mp4",
-                    description: "See how our literacy bootcamps are transforming the lives of out-of-school children across Nigeria."
-                  },
-                  {
-                    title: "Literacy Support for Struggling Students",
-                    src: "/src/assets/Impact Page video feedback/Literacy Bootcamp for children struggling to read in formal schooling.mp4",
-                    description: "Watch how we help children who are struggling in formal schooling catch up with their peers."
-                  },
-                  {
-                    title: "Teacher Training Program",
-                    src: "/src/assets/Impact Page video feedback/Teacher Training for teachers in LEA school.mp4",
-                    description: "Our comprehensive teacher training programs empower educators with modern teaching methodologies."
-                  }
-                ].map((video, index) => (
-                  <div key={index} className="flex-shrink-0 w-96">
-                    <Card className="h-full ngo-card overflow-hidden">
-                      <div className="aspect-video bg-black">
-                        <video
-                          src={video.src}
+          
+          <div className="relative">
+            <div className="flex space-x-6 overflow-x-auto pb-6 -mx-4 px-4 scrollbar-hide" id="videoCarousel">
+              {[
+                {
+                  title: "Literacy Bootcamp for Out of School Children",
+                  videoId: "Dugk6oqWh-g",
+                  description: "See how our literacy bootcamp transforms the lives of out-of-school children, giving them the foundation they need for a brighter future."
+                },
+                {
+                  title: "Literacy Bootcamp for Children Struggling in Formal Schooling",
+                  videoId: "mye3gQ-xUog",
+                  description: "Discover how we help children who are falling behind in traditional school settings catch up and excel in their education."
+                },
+                {
+                  title: "Teacher Training for LEA School Teachers",
+                  videoId: "3TGCSI3Vxjo",
+                  description: "Watch how our teacher training programs empower educators in Local Education Authority schools with new skills and methodologies."
+                },
+                {
+                  title: "Teacher Training for Non-Formal Learning Centres",
+                  videoId: "Qt0dU_NBs4s",
+                  description: "Learn about our specialized training for teachers in non-formal learning centers, reaching the most marginalized communities."
+                }
+              ].map((video, index) => (
+                <div key={video.videoId} className="flex-shrink-0 w-full sm:w-96">
+                  <Card className="h-full ngo-card">
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-semibold text-primary mb-4">{video.title}</h3>
+                      <div className="aspect-video bg-muted rounded-lg mb-4 overflow-hidden">
+                        <iframe
+                          className="w-full h-full"
+                          src={`https://www.youtube.com/embed/${video.videoId}`}
                           title={video.title}
-                          className="w-full h-full object-cover"
-                          controls
-                          preload="metadata"
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          referrerPolicy="strict-origin-when-cross-origin"
                         />
                       </div>
-                      <CardContent className="p-6">
-                        <h3 className="text-lg font-semibold text-primary mb-2">{video.title}</h3>
-                        <p className="text-muted-foreground text-sm">{video.description}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </div>
-              
-              {/* Scroll indicators */}
-              <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-2 pointer-events-none">
-                <button 
-                  className="bg-background/80 hover:bg-background rounded-full p-2 shadow-lg pointer-events-auto"
-                  onClick={() => {
-                    const container = document.querySelector('.overflow-x-auto');
-                    if (container) container.scrollBy({ left: -400, behavior: 'smooth' });
-                  }}
-                >
-                  <ArrowRight className="h-6 w-6 rotate-180" />
-                </button>
-                <button 
-                  className="bg-background/80 hover:bg-background rounded-full p-2 shadow-lg pointer-events-auto"
-                  onClick={() => {
-                    const container = document.querySelector('.overflow-x-auto');
-                    if (container) container.scrollBy({ left: 400, behavior: 'smooth' });
-                  }}
-                >
-                  <ArrowRight className="h-6 w-6" />
-                </button>
-              </div>
+                      <p className="text-muted-foreground">
+                        {video.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
             </div>
-          </FadeInOnScroll>
+            
+            {/* Navigation Buttons */}
+            <button 
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg z-10 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                const container = document.getElementById('videoCarousel');
+                if (container) container.scrollBy({ left: -400, behavior: 'smooth' });
+              }}
+              aria-label="Previous video"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button 
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg z-10 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                const container = document.getElementById('videoCarousel');
+                if (container) container.scrollBy({ left: 400, behavior: 'smooth' });
+              }}
+              aria-label="Next video"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 

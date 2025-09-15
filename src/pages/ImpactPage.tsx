@@ -349,14 +349,15 @@ export default function ImpactPage() {
                 <CardContent className="p-0">
                   <h3 className="text-xl font-semibold text-primary mb-4">Teacher Training for Non-Formal Learning Centres</h3>
                   <div className="aspect-video bg-muted rounded-lg mb-4 overflow-hidden">
-                    <video 
-                      controls 
-                      className="w-full h-full object-cover"
-                      poster="/placeholder.svg"
-                    >
-                      <source src="/src/assets/Impact Page video feedback/Teacher Training for teachers in Non-Formal Learning Centres.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/Qt0dU_NBs4s"
+                      title="Teacher Training for Non-Formal Learning Centres"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
                   </div>
                   <p className="text-muted-foreground">
                     Learn about our specialized training for teachers in non-formal learning centers, reaching the most marginalized communities.
