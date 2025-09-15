@@ -15,17 +15,17 @@ const contactInfoCards = [
     icon: MapPin,
     title: "Office Address",
     description: "Come visit us at our office location",
-    details: "Gwagwalada, Abuja, Federal Capital Territory, Nigeria",
+    details: "RABNI HQ, Garki, Abuja, Federal Capital Territory, Nigeria",
     action: "Get Directions",
-    link: "https://maps.app.goo.gl/your_office_location" // Placeholder link
+    link: "https://maps.app.goo.gl/xs6Vyt18CQmbWMVd6"
   },
   {
     icon: Phone,
     title: "Phone & WhatsApp",
     description: "Call or chat with our support team",
-    details: "+234 803 123 4567",
+    details: "+234 703 324 7060",
     action: "Call Now",
-    link: "tel:+2348031234567"
+    link: "tel:+2347033247060"
   },
   {
     icon: Mail,
@@ -45,26 +45,20 @@ const contactInfoCards = [
   }
 ];
 
-const officeLocations = [
-  { title: "Main Office", description: "Our primary administrative hub." },
-  { title: "Learning Center", description: "Where our educational programs come to life." },
-  { title: "Meeting Room", description: "For collaborations and stakeholder discussions." },
-];
-
 const immediateAssistanceCards = [
   {
     icon: Phone,
     title: "Call Us",
     description: "Speak directly with our team",
-    details: "+234 803 123 4567",
-    link: "tel:+2348031234567",
+    details: "+234 703 324 7060",
+    link: "tel:+2347033247060",
   },
   {
     icon: MessageCircle,
     title: "WhatsApp",
     description: "Chat with us on WhatsApp",
-    details: "+234 803 123 4567",
-    link: "https://wa.me/2348031234567",
+    details: "+234 703 324 7060",
+    link: "https://wa.me/2347033247060",
   },
   {
     icon: Mail,
@@ -73,6 +67,36 @@ const immediateAssistanceCards = [
     details: "info@rabni.org",
     link: "mailto:info@rabni.org",
   },
+];
+
+const socialMediaLinks = [
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/rabni-education-interventions/",
+    icon: (
+      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+    )
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/rabnieducation",
+    icon: (
+      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+      </svg>
+    )
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/rabnieducation",
+    icon: (
+      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    )
+  }
 ];
 
 export default function ContactPage() {
@@ -159,45 +183,45 @@ export default function ContactPage() {
               <h2 className="display-text text-primary mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-xl shadow-lg border border-border">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
+                  <div>
                     <Label htmlFor="name">Full Name</Label>
                     <Input id="name" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="email">Email Address *</Label>
+                  </div>
+                  <div>
+                    <Label htmlFor="email">Email Address *</Label>
                     <Input id="email" type="email" placeholder="john.doe@example.com" value={formData.email} onChange={handleInputChange} required />
-                      </div>
-                    </div>
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="phone">Phone Number</Label>
                   <Input id="phone" type="tel" placeholder="+234 801 234 5678" value={formData.phone} onChange={handleInputChange} />
-                      </div>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
+                  <div>
                     <Label htmlFor="inquiryType">Type of Inquiry</Label>
                     <Select value={formData.inquiryType} onValueChange={(value) => handleSelectChange('inquiryType', value)}>
                       <SelectTrigger id="inquiryType">
                         <SelectValue placeholder="Select type" />
-                          </SelectTrigger>
-                          <SelectContent>
+                      </SelectTrigger>
+                      <SelectContent>
                         <SelectItem value="General Inquiry">General Inquiry</SelectItem>
                         <SelectItem value="Partnership">Partnership</SelectItem>
                         <SelectItem value="Volunteer">Volunteer</SelectItem>
                         <SelectItem value="Support">Support</SelectItem>
                         <SelectItem value="Other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
                     <Label htmlFor="organization">Organization (if applicable)</Label>
                     <Input id="organization" placeholder="RABNI Foundation" value={formData.organization} onChange={handleInputChange} />
-                      </div>
-                    </div>
-                    <div>
-                      <Label htmlFor="subject">Subject *</Label>
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="subject">Subject *</Label>
                   <Input id="subject" placeholder="Brief summary of your message" value={formData.subject} onChange={handleInputChange} required />
-                    </div>
-                    <div>
+                </div>
+                <div>
                   <Label htmlFor="message">Your Message *</Label>
                   <Textarea id="message" rows={5} placeholder="Provide detailed information about your inquiry..." value={formData.message} onChange={handleInputChange} required />
                 </div>
@@ -207,10 +231,10 @@ export default function ContactPage() {
                   {submitted ? <Check className="ml-2 h-4 w-4" /> : <ArrowRight className="ml-2 h-4 w-4" />}
                 </Button>
               </form>
-                    </div>
+            </div>
           </FadeInOnScroll>
 
-          {/* Right Column: Contact Info Cards, Office Locations, Map */}
+          {/* Right Column: Contact Info Cards */}
           <div>
             <FadeInOnScroll delay={100}>
               <h2 className="display-text text-primary mb-6">Contact Information</h2>
@@ -226,83 +250,43 @@ export default function ContactPage() {
                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-auto">
                           <Button variant="outline" className="btn-outline">
                             {item.action}
-                    </Button>
+                          </Button>
                         </a>
-                )}
-              </CardContent>
-            </Card>
+                      )}
+                    </CardContent>
+                  </Card>
                 ))}
-                      </div>
-            </FadeInOnScroll>
-
-            <FadeInOnScroll delay={200}>
-              <h2 className="display-text text-primary mb-6">Visit Our Office</h2>
-              <div className="bg-card p-8 rounded-xl shadow-lg border border-border mb-12">
-                <p className="text-lg text-muted-foreground mb-4">RABNI Education Interventions HQ</p>
-                <p className="text-md font-medium text-primary mb-2">Plot 123, Education Road, Gwagwalada, Abuja</p>
-                <p className="text-sm text-muted-foreground mb-4">Open Mon-Fri: 9:00 AM - 5:00 PM. Saturday & Sunday: Closed.</p>
-                <a href="https://maps.app.goo.gl/your_office_location" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="btn-outline">
-                    Get Directions
-                  </Button>
-                </a>
-                <p className="text-xs text-muted-foreground mt-4">Visitors are welcome! We recommend scheduling an appointment for personalized attention.</p>
               </div>
-            </FadeInOnScroll>
-
-            <FadeInOnScroll delay={300}>
-              <div className="bg-gray-100 p-8 rounded-xl shadow-lg min-h-[250px] flex items-center justify-center text-gray-500 mb-12">
-                  <div className="text-center">
-                  <MapPin className="h-16 w-16 text-primary mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-primary mb-2">Interactive Map</h3>
-                  <p className="text-muted-foreground">Map of our office location coming soon.</p>
-                  </div>
-                </div>
-            </FadeInOnScroll>
-
-            <FadeInOnScroll delay={400}>
-              <h2 className="display-text text-primary mb-6">Our Office</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {officeLocations.map((location, index) => (
-                  <Card key={index} className="ngo-card p-4 text-center">
-                <CardContent className="p-0">
-                      <h3 className="font-semibold text-primary mb-1">{location.title}</h3>
-                      <p className="text-sm text-muted-foreground">{location.description}</p>
-                </CardContent>
-              </Card>
-                ))}
-            </div>
             </FadeInOnScroll>
           </div>
         </div>
       </section>
 
-      {/* Need Immediate Assistance Section */}
-      <section className="section-spacing bg-white">
+      {/* Social Media Section */}
+      <section className="py-12 bg-white">
         <div className="container-padding max-w-7xl mx-auto text-center">
           <FadeInOnScroll delay={100}>
-            <h2 className="display-text text-muted-foreground mb-8">Need Immediate Assistance?</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-              For urgent matters or quick questions, try these alternative contact methods.
+            <h2 className="display-text text-primary mb-4">Connect With Us on Social Media</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+              Follow us to stay updated with our latest news, events, and initiatives.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {immediateAssistanceCards.map((item, index) => (
-                <FadeInOnScroll key={item.title} delay={index * 100}>
-                  <Card className="ngo-card p-6 flex flex-col items-center text-center h-full">
-                    <CardContent className="p-0 flex-1 flex flex-col">
-                      <item.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                      <h3 className="text-lg font-semibold text-primary mb-2">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4 flex-1">{item.description}</p>
-                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-auto">
-                        <Button variant="outline" className="btn-outline">
-                          {item.title === "Call Us" ? "Call Now" : item.title === "WhatsApp" ? "Chat on WhatsApp" : "Send an email"}
-                </Button>
-                      </a>
-              </CardContent>
-            </Card>
+            <div className="flex justify-center gap-8 flex-wrap">
+              {socialMediaLinks.map((social, index) => (
+                <FadeInOnScroll key={social.name} delay={index * 100}>
+                  <a 
+                    href={social.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center p-6 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow ngo-card w-48"
+                  >
+                    <div className="text-primary mb-3">
+                      {social.icon}
+                    </div>
+                    <span className="font-medium text-primary">{social.name}</span>
+                  </a>
                 </FadeInOnScroll>
               ))}
-          </div>
+            </div>
           </FadeInOnScroll>
         </div>
       </section>
