@@ -99,7 +99,10 @@ export default function GalleryPage() {
                 <FadeInOnScroll key={item.id} delay={index * 100}>
                   <Card className="ngo-card overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
                     <CardContent className="p-0 flex-1 flex flex-col">
-                      <div className="relative h-48 bg-muted group">
+                      <div 
+                        className="relative h-48 bg-muted group cursor-pointer"
+                        onClick={() => setSelectedItem(item)}
+                      >
                         {item.media_type === 'photo' ? (
                           <img
                             src={item.media_url}
@@ -116,11 +119,13 @@ export default function GalleryPage() {
                         )}
                         <Badge className="absolute top-2 left-2 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-semibold">
                           {item.category}
-                  </Badge>
+                        </Badge>
                         {item.media_type === 'video' && (
-                          <PlayCircle className="absolute inset-0 m-auto h-16 w-16 text-white/80 group-hover:text-white transition-colors cursor-pointer" />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                            <PlayCircle className="h-16 w-16 text-white/80 group-hover:text-white transition-colors" />
+                          </div>
                         )}
-                </div>
+                      </div>
                       <div className="p-4 flex-1 flex flex-col">
                   <h3 className="text-lg font-semibold text-primary mb-2">{item.title}</h3>
                         <p className="text-sm text-muted-foreground mb-3 flex-1">{item.description}</p>
@@ -146,13 +151,43 @@ export default function GalleryPage() {
           </div>
 
           {/* Dialog for individual item view */}
-          <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
-            <DialogContent className="max-w-[90vw] h-[90vh] p-0 overflow-hidden">
-              {selectedItem?.media_type === 'photo' ? (
-                <img src={selectedItem.media_url} alt={selectedItem.title} className="w-full h-full object-contain" />
-              ) : (
-                <video src={selectedItem?.media_url} title={selectedItem?.title} controls className="w-full h-full object-contain" />
-              )}
+          <Dialog open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
+            <DialogContent className="max-w-[90vw] max-h-[90vh] h-auto p-0 overflow-hidden bg-black">
+              <div className="relative w-full h-full flex items-center justify-center">
+                {selectedItem?.media_type === 'photo' ? (
+                  <img 
+                    src={selectedItem.media_url} 
+                    alt={selectedItem.title} 
+                    className="max-w-full max-h-[85vh] object-contain" 
+                  />
+                ) : (
+                  <video 
+                    src={selectedItem?.media_url} 
+                    title={selectedItem?.title} 
+                    controls 
+                    className="max-w-full max-h-[85vh] object-contain"
+                    autoPlay
+                  />
+                )}
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute top-2 right-2 text-white hover:bg-white/20"
+                  onClick={() => setSelectedItem(null)}
+                >
+                  ✕
+                </Button>
+              </div>
+              <div className="bg-background p-4 border-t">
+                <h3 className="text-lg font-semibold">{selectedItem?.title}</h3>
+                {selectedItem?.description && (
+                  <p className="text-sm text-muted-foreground mt-1">{selectedItem.description}</p>
+                )}
+                <div className="flex justify-between items-center mt-2 text-xs text-muted-foreground">
+                  <span>{selectedItem?.category}</span>
+                  <span>{selectedItem?.created_at && new Date(selectedItem.created_at).toLocaleDateString()}</span>
+                </div>
+              </div>
             </DialogContent>
           </Dialog>
         </div>
