@@ -22,6 +22,7 @@ import VolunteerApplicationsPage from "./pages/admin/VolunteerApplicationsPage";
 import ContactMessagesPage from "./pages/admin/ContactMessagesPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import React, { lazy, Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next"
 
 const queryClient = new QueryClient();
 
