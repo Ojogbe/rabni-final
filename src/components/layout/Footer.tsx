@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const navigation = {
   main: [
@@ -15,9 +15,9 @@ const navigation = {
     { name: "Annual Reports", href: "/reports" },
   ],
   social: [
-    { name: "Facebook", href: "https://www.facebook.com/share/1CU1kHkmEi/", icon: Facebook },
-    { name: "Instagram", href: "https://www.instagram.com/rabnieducationinterventions?igsh=OXd2enExanF1NDh2", icon: Twitter },
-    { name: "LinkedIn", href: "https://share.google/ktcdgk6YLQSPr9vzR", icon: Linkedin },
+    { name: "Facebook", href: "https://web.facebook.com/ReadABookNigeriaInitiative", icon: Facebook },
+    { name: "Instagram", href: "https://www.instagram.com/rabnieducationinterventions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", icon: Instagram },
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/rabni-education-interventions/posts/?feedView=all", icon: Linkedin },
     { name: "YouTube", href: "https://youtube.com/@rabnieducationinterventions?si=vbT8YawVvDuVvy8e", icon: Youtube },
   ],
 };

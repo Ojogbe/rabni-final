@@ -27,7 +27,7 @@ export default function GalleryManagementPage() {
   const [loading, setLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [currentGalleryItem, setCurrentGalleryItem] = useState<Partial<GalleryItem> | null>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
@@ -50,25 +50,30 @@ export default function GalleryManagementPage() {
     setLoading(false);
   };
 
-  const handleFileUpload = async (item: Partial<GalleryItem>) => {
-    if (!file) return item.media_url; // No new file to upload, return existing URL
+  const handleFileUploads = async (files: File[], category: string, title: string) => {
+    const uploadedUrls: string[] = [];
+    for (const file of files) {
+      const fileExt = file.name.split('.').pop();
+      const safeTitle = (title || 'item').toLowerCase().trim().replace(/[^a-z0-9\-\s_]/g, '').replace(/\s+/g, '-');
+      const fileName = `${safeTitle}-${Math.random().toString(36).substring(2, 9)}`;
+      const filePath = `${category}/${fileName}.${fileExt}`;
 
-    const fileExt = file.name.split('.').pop();
-    const filePath = `${item.category}/${item.title}-${Math.random()}.${fileExt}`;
+      const { error: uploadError } = await supabase.storage
+        .from('gallery')
+        .upload(filePath, file);
 
-    const { error: uploadError } = await supabase.storage
-      .from('gallery')
-      .upload(filePath, file);
+      if (uploadError) {
+        console.error('Upload error for', file.name, uploadError);
+        throw uploadError;
+      }
 
-    if (uploadError) {
-      throw uploadError;
+      const { data: publicUrlData } = supabase.storage
+        .from('gallery')
+        .getPublicUrl(filePath);
+
+      uploadedUrls.push(publicUrlData.publicUrl);
     }
-
-    const { data: publicUrlData } = supabase.storage
-      .from('gallery')
-      .getPublicUrl(filePath);
-
-    return publicUrlData.publicUrl;
+    return uploadedUrls;
   };
 
   const handleSaveGalleryItem = async () => {
@@ -76,61 +81,69 @@ export default function GalleryManagementPage() {
       toast.error('Title, media type, and category are required.');
       return;
     }
-    if (!currentGalleryItem.id && !file) {
-      toast.error('File is required for new gallery items.');
+    if (!currentGalleryItem.id && files.length === 0) {
+      toast.error('At least one file is required for new gallery items.');
       return;
     }
 
-    setIsUploading(true); // Set loading state to true
+    console.log('Selected files count:', files.length, files.map(f => f.name));
+    setIsUploading(true);
     try {
-      let media_url = currentGalleryItem.media_url;
-      if (file) {
-        media_url = await handleFileUpload(currentGalleryItem);
-      }
+      if (files.length > 0) {
+        const mediaUrls = await handleFileUploads(
+          files,
+          currentGalleryItem.category,
+          currentGalleryItem.title
+        );
+        console.log('Uploaded URLs:', mediaUrls);
 
-      let error = null;
+        // Insert one row per file sequentially to avoid any batching issues
+        for (const media_url of mediaUrls) {
+          const { error: insertError } = await supabase
+            .from('gallery_items')
+            .insert({
+              title: currentGalleryItem.title,
+              description: currentGalleryItem.description,
+              media_url,
+              media_type: currentGalleryItem.media_type,
+              category: currentGalleryItem.category,
+              created_at: new Date().toISOString(),
+            });
+          if (insertError) {
+            console.error('Insert error for media_url', media_url, insertError);
+            throw insertError;
+          }
+        }
 
-      if (currentGalleryItem.id) {
-        // Update existing item
+        toast.success(`${files.length} files uploaded successfully.`);
+      } else if (currentGalleryItem.id) {
         const { error: updateError } = await supabase
           .from('gallery_items')
           .update({
             title: currentGalleryItem.title,
             description: currentGalleryItem.description,
-            media_url: media_url,
             media_type: currentGalleryItem.media_type,
             category: currentGalleryItem.category,
           })
           .eq('id', currentGalleryItem.id);
-        error = updateError;
-      } else {
-        // Create new item
-        const { error: insertError } = await supabase
-          .from('gallery_items')
-          .insert({
-            title: currentGalleryItem.title,
-            description: currentGalleryItem.description,
-            media_url: media_url,
-            media_type: currentGalleryItem.media_type,
-            category: currentGalleryItem.category,
-            created_at: new Date().toISOString(), // Changed from uploaded_at to created_at
-          });
-        error = insertError;
+
+        if (updateError) {
+          console.error('Update error', updateError);
+          throw updateError;
+        }
+
+        toast.success('Gallery item updated successfully.');
       }
 
-      if (error) {
-        toast.error('Error saving gallery item: ' + error.message);
-      } else {
-        toast.success('Gallery item saved successfully.');
-        setIsDialogOpen(false);
-        setCurrentGalleryItem(null);
-        setFile(null);
-        fetchGalleryItems();
-      }
+      setIsDialogOpen(false);
+      setCurrentGalleryItem(null);
+      setFiles([]);
+      fetchGalleryItems();
     } catch (err: any) {
-      toast.error('Error handling file upload: ' + err.message);
+      console.error('Save error', err);
+      toast.error('Error: ' + (err?.message || 'Failed to save gallery items'));
     } finally {
-      setIsUploading(false); // Reset loading state in finally block
+      setIsUploading(false);
     }
   };
 
@@ -169,13 +182,13 @@ export default function GalleryManagementPage() {
 
   const openEditDialog = (item: GalleryItem) => {
     setCurrentGalleryItem(item);
-    setFile(null);
+    setFiles([]);
     setIsDialogOpen(true);
   };
 
   const openCreateDialog = () => {
-    setCurrentGalleryItem({ created_at: new Date().toISOString() }); // Changed from uploaded_at to created_at
-    setFile(null);
+    setCurrentGalleryItem({ created_at: new Date().toISOString() });
+    setFiles([]);
     setIsDialogOpen(true);
   };
 
@@ -238,18 +251,59 @@ export default function GalleryManagementPage() {
               
               {!currentGalleryItem?.id && (
                 <div>
-                  <label htmlFor="file-upload" className="block text-sm font-medium text-muted-foreground mb-2">Upload File</label>
+                  <label htmlFor="file-upload" className="block text-sm font-medium text-muted-foreground mb-2">
+                    Upload Files (Multiple files can be selected)
+                  </label>
                   <Input
                     id="file-upload"
                     type="file"
-                    onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
+                    multiple
+                    onChange={(e) => {
+                      const list = e.target.files ? Array.from(e.target.files) : [];
+                      console.log('File input changed, count =', list.length, list.map(f => f.name));
+                      // Append to previously selected files so admins can pick in multiple rounds
+                      setFiles(prev => {
+                        const combined = [...prev, ...list];
+                        // Optional: de-duplicate by name+size to avoid exact duplicates
+                        const seen = new Set<string>();
+                        const deduped: File[] = [];
+                        for (const f of combined) {
+                          const key = `${f.name}-${f.size}`;
+                          if (!seen.has(key)) {
+                            seen.add(key);
+                            deduped.push(f);
+                          }
+                        }
+                        return deduped;
+                      });
+                    }}
                     className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"
-                    required={!currentGalleryItem?.id}
+                    required={!currentGalleryItem?.id && files.length === 0}
                   />
-                  {file && <p className="mt-2 text-sm text-muted-foreground">Selected file: {file.name}</p>}
+                  {files.length > 0 && (
+                    <div className="mt-2 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm text-muted-foreground">Selected files: {files.length}</p>
+                        <Button type="button" size="sm" variant="outline" onClick={() => setFiles([])}>Clear all</Button>
+                      </div>
+                      <ul className="text-xs text-muted-foreground list-disc pl-5 space-y-1 max-h-40 overflow-auto">
+                        {files.map((file, index) => (
+                          <li key={`${file.name}-${file.size}-${index}`} className="flex items-center gap-2">
+                            <span className="truncate">{file.name}</span>
+                            <Button
+                              type="button"
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => setFiles(prev => prev.filter((_, i) => i !== index))}
+                            >Remove</Button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               )}
-              {currentGalleryItem?.media_url && !file && (
+              {currentGalleryItem?.media_url && files.length === 0 && (
                 <div className="text-sm text-muted-foreground">
                   Current File: <a href={currentGalleryItem.media_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">View Current File</a>
                 </div>
@@ -258,7 +312,7 @@ export default function GalleryManagementPage() {
             <DialogFooter>
               <Button onClick={() => setIsDialogOpen(false)} variant="outline">Cancel</Button>
               <Button onClick={handleSaveGalleryItem} disabled={isUploading} className="btn-hero">
-                {isUploading ? 'Saving...' : 'Save Item'}
+                {isUploading ? 'Uploading...' : `Save ${files.length > 0 ? `(${files.length}) Items` : 'Item'}`}
               </Button>
             </DialogFooter>
           </DialogContent>
