@@ -15,7 +15,7 @@ const contactInfoCards = [
     icon: MapPin,
     title: "Office Address",
     description: "Come visit us at our office location",
-    details: "RABNI HQ, Garki, Abuja, Federal Capital Territory, Nigeria",
+    details: "RABNI HQ, Gwagwalada, Abuja, Federal Capital Territory, Nigeria",
     action: "Get Directions",
     link: "https://maps.app.goo.gl/xs6Vyt18CQmbWMVd6"
   },

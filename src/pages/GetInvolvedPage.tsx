@@ -71,18 +71,20 @@ const donationTiers = [
   }
 ];
 
+// IMPORTANT: On Vercel, you cannot reference images under /src via a URL. Serve from /public instead.
+// Place logo files under public/partners with these exact filenames (case-sensitive).
 const partners = [
-  { name: "U.S. Embassy & Consulate in Nigeria", logo: "/src/assets/Rabni Partners/U.S. Embassy and Consulate in Nigeria.png", type: "Government" },
-  { name: "Project Literacy", logo: "/src/assets/Rabni Partners/Project Literacy.jpg", type: "Educational" },
-  { name: "Abuja Enterprise Agency (AEA)", logo: "/src/assets/Rabni Partners/Abuja Enterprise Agency (AEA).jpg", type: "Government" },
-  { name: "International Rescue Committee (IRC)", logo: "/src/assets/Rabni Partners/INTERNATIONAL RESCUE COMMITEE (IRC).jpg", type: "NGO" },
-  { name: "Gordon Barrett", logo: "/src/assets/Rabni Partners/Gordon Barrett.png", type: "Individual" },
-  { name: "Northeast Humanitarian Innovation Hub (NEHIH)", logo: "/src/assets/Rabni Partners/Northeast Humanitarian Innovation Hub (NEHIH).png", type: "NGO" },
-  { name: "HH Muhammad Sanusi II SDG Challenge", logo: "/src/assets/Rabni Partners/HH Muhammad Sanusi II SDG Challenge.png", type: "Foundation" },
-  { name: "TED-Ed", logo: "/src/assets/Rabni Partners/TED-Ed.jpg", type: "Educational" },
-  { name: "UN Sustainable Development Goals (SDGs)", logo: "/src/assets/Rabni Partners/UN Sustainable Development Goals (SDGs).png", type: "International" },
-  { name: "YALI Regional Leadership Center West Africa – Accra", logo: "/src/assets/Rabni Partners/Yali Regional Leadership Center.png", type: "Educational" },
-  { name: "Korean Cultural Centre", logo: "/src/assets/Rabni Partners/Korean Cultural Centre.jpg", type: "Cultural" }
+  { name: "U.S. Embassy & Consulate in Nigeria", logo: "U.S. Embassy and Consulate in Nigeria.png", type: "Government" },
+  { name: "Project Literacy", logo: "Project Literacy.jpg", type: "Educational" },
+  { name: "Abuja Enterprise Agency (AEA)", logo: "Abuja Enterprise Agency (AEA).jpg", type: "Government" },
+  { name: "International Rescue Committee (IRC)", logo: "INTERNATIONAL RESCUE COMMITEE (IRC).jpg", type: "NGO" },
+  { name: "Gordon Barrett", logo: "Gordon Barrett.png", type: "Individual" },
+  { name: "Northeast Humanitarian Innovation Hub (NEHIH)", logo: "Northeast Humanitarian Innovation Hub (NEHIH).png", type: "NGO" },
+  { name: "HH Muhammad Sanusi II SDG Challenge", logo: "HH Muhammad Sanusi II SDG Challenge.png", type: "Foundation" },
+  { name: "TED-Ed", logo: "TED-Ed.jpg", type: "Educational" },
+  { name: "UN Sustainable Development Goals (SDGs)", logo: "UN Sustainable Development Goals (SDGs).png", type: "International" },
+  { name: "YALI Regional Leadership Center West Africa – Accra", logo: "Yali Regional Leadership Center.png", type: "Educational" },
+  { name: "Korean Cultural Centre", logo: "Korean Cultural Centre.jpg", type: "Cultural" }
 ];
 
 export default function GetInvolvedPage() {
@@ -188,7 +190,7 @@ export default function GetInvolvedPage() {
     } else {
       toast.success("Application submitted successfully!");
       setSubmitted(true);
-    setFormData({
+      setFormData({
         full_name: "",
         email: "",
         phone: "",
@@ -387,11 +389,21 @@ export default function GetInvolvedPage() {
                       {partners.map((partner) => (
                           <Card key={partner.name} className="ngo-card p-6 flex flex-col items-center text-center space-y-4">
                             <div className="w-20 h-20 flex items-center justify-center bg-muted rounded-lg overflow-hidden">
-                              <img 
-                                src={partner.logo} 
+                              <img
+                                src={`/partners/${partner.logo}`}
                                 alt={partner.name}
                                 className="w-full h-full object-contain"
+                                onError={(e) => {
+                                  // Hide broken image and show textual fallback
+                                  const img = e.currentTarget as HTMLImageElement;
+                                  img.style.display = 'none';
+                                  const fallback = img.parentElement?.querySelector('.logo-fallback') as HTMLElement | null;
+                                  if (fallback) fallback.style.display = 'flex';
+                                }}
                               />
+                              <div className="logo-fallback hidden w-full h-full items-center justify-center text-xs font-semibold text-primary bg-primary/10">
+                                {partner.name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()}
+                              </div>
                             </div>
                           <div>
                               <h4 className="font-semibold text-primary text-sm mb-1">{partner.name}</h4>
